@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GaragePro Signup Tracker</title>
+  <style>
+    body {
+      width: 320px;
+      max-height: 600px;
+      overflow: auto;
+      padding: 15px;
+      font-family: Arial, sans-serif;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 15px;
+    }
+    .toggle-container {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+    .toggle-label {
+      margin-right: 10px;
+      font-weight: bold;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 5px;
+      padding: 5px;
+      background-color: #f5f5f5;
+      border-radius: 4px;
+    }
+    label {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .delete-button {
+      margin-right: 10px;
+      background-color: #ff4444;
+      border: none;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .delete-button:hover {
+      background-color: #cc0000;
+    }
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 40px;
+      height: 20px;
+    }
+    .slider {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: 0.4s;
+    }
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 14px;
+      width: 14px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      border-radius: 50%;
+      transition: 0.4s;
+    }
+    input[type="checkbox"] {
+      display: none;
+    }
+    input[type="checkbox"]:checked + .slider {
+      background-color: #4CAF50;
+    }
+    input[type="checkbox"]:checked + .slider:before {
+      transform: translateX(16px);
+    }
+    .input-container {
+      margin-top: 15px;
+      display: flex;
+      gap: 10px;
+    }
+    #websiteInput {
+      flex: 1;
+      padding: 5px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    #addButton {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    #addButton:hover {
+      background-color: #45a049;
+    }
+    .message-container {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #f9f9f9;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+    }
+    .message-label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 8px;
+      color: #333;
+    }
+    #customMessage {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      margin-bottom: 10px;
+      resize: vertical;
+    }
+    #saveMessageButton, #resetMessageButton {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-right: 8px;
+      margin-bottom: 5px;
+      font-size: 12px;
+    }
+    #resetMessageButton {
+      background-color: #ff9800;
+    }
+    #saveMessageButton:hover {
+      background-color: #45a049;
+    }
+    #resetMessageButton:hover {
+      background-color: #f57c00;
+    }
+    .footer {
+      margin-top: 20px;
+      font-size: 12px;
+      color: #888;
+      text-align: left;
+      border-top: 1px solid #ddd;
+      padding-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h2>GaragePro Signup Tracker</h2>
+  </div>
+  
+  <div class="toggle-container">
+    <span class="toggle-label">Enable Tracker:</span>
+    <label class="switch">
+      <input type="checkbox" id="toggle" />
+      <span class="slider"></span>
+    </label>
+  </div>
+
+  <div class="toggle-container">
+    <span class="toggle-label">Auto-Send WhatsApp:</span>
+    <label class="switch">
+      <input type="checkbox" id="autoSendToggle" />
+      <span class="slider"></span>
+    </label>
+  </div>
+
+  <div class="toggle-container">
+    <span class="toggle-label">Sound Alert:</span>
+    <label class="switch">
+      <input type="checkbox" id="soundToggle" />
+      <span class="slider"></span>
+    </label>
+  </div>
+
+  <div class="input-container">
+    <input type="text" id="websiteInput" placeholder="Enter website URL" />
+    <button id="addButton">Add Website</button>
+  </div>
+
+  <ul id="websiteList">
+    <!-- Populated with added websites -->
+  </ul>
+
+  <div class="message-container">
+    <label for="customMessage" class="message-label">Custom WhatsApp Message:</label>
+    <textarea id="customMessage" placeholder="Enter your custom WhatsApp message... Use {name}, {phone}, {leadType} as placeholders" rows="4"></textarea>
+    <button id="saveMessageButton">Save Message</button>
+    <button id="resetMessageButton">Reset to Default</button>
+  </div>
+
+  <br>
+
+  <button id="clearStorageButton">Clear Storage & Reset</button>
+
+  <div class="footer">
+    Developed by Shahbaz
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
